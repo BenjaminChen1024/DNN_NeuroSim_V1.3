@@ -292,7 +292,12 @@ int main(int argc, char * argv[]) {
 			cout << "layer" << i+1 << "'s buffer readDynamicEnergy is: " << layerbufferDynamicEnergy*1e12 << "pJ" << endl;
 			cout << "layer" << i+1 << "'s ic latency is: " << layericLatency*1e9 << "ns" << endl;
 			cout << "layer" << i+1 << "'s ic readDynamicEnergy is: " << layericDynamicEnergy*1e12 << "pJ" << endl;
-			
+
+			//2024.03.25// add layer energy efficiency calculation
+			double numComputation_layer = 0;
+			numComputation_layer = 2*(netStructure[i][0] * netStructure[i][1] * netStructure[i][2] * netStructure[i][3] * netStructure[i][4] * netStructure[i][5]);
+			cout << "Energy Efficiency TOPS/W (Layer-by-Layer Process): " << numComputation_layer / (layerReadDynamicEnergy*1e12) << endl;
+
 			
 			cout << endl;
 			cout << "************************ Breakdown of Latency and Dynamic Energy *************************" << endl;
@@ -388,6 +393,11 @@ int main(int argc, char * argv[]) {
 			cout << "layer" << i+1 << "'s buffer readDynamicEnergy is: " << bufferEnergyPerLayer[i]*1e12 << "pJ" << endl;
 			cout << "layer" << i+1 << "'s ic latency is: " << icLatencyPerLayer[i]*1e9 << "ns" << endl;
 			cout << "layer" << i+1 << "'s ic readDynamicEnergy is: " << icEnergyPerLayer[i]*1e12 << "pJ" << endl;
+
+			//2024.03.25// add layer energy efficiency calculation
+			double numComputation_layer = 0;
+			numComputation_layer = 2*(netStructure[i][0] * netStructure[i][1] * netStructure[i][2] * netStructure[i][3] * netStructure[i][4] * netStructure[i][5]);
+			cout << "Energy Efficiency TOPS/W (Layer-by-Layer Process): " << numComputation_layer / (layerReadDynamicEnergy*1e12) << endl;
 
 			cout << endl;
 			cout << "************************ Breakdown of Latency and Dynamic Energy *************************" << endl;
